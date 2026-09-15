@@ -32,8 +32,8 @@ export default function CeremoniaScreen() {
           showsVerticalScrollIndicator={false}>
         {/* Message */}
         <Text style={[styles.message, !isLandscape && styles.portraitMessage]}>
-          Nos hace muy felices compartir contigo{'\n'}
-          nuestra union en matrimonio y la celebración{'\n'}
+          Nos hace muy felices compartir contigo
+          nuestra union en matrimonio y la celebración
           del comienzo de esta nueva etapa
         </Text>
       
@@ -60,7 +60,7 @@ export default function CeremoniaScreen() {
         <Text style={[styles.date, !isLandscape && styles.portraitTime]}>
           07.05.27
         </Text>
-        <Text style={[styles.place, !isLandscape && styles.portraitPlace]}>
+        <Text style={[styles.place, styles.ralewayLight, !isLandscape && styles.portraitPlace]}>
           Grand Isla Navidad Golf & SPA Resort With Marina 
         </Text>
 
@@ -79,7 +79,7 @@ export default function CeremoniaScreen() {
         </Pressable>
       
         {/* Address */}
-        <Text style={[styles.address, !isLandscape && styles.portraitAddress]}>
+        <Text style={[styles.address, styles.ralewayLight, !isLandscape && styles.portraitAddress]}>
           Circuito de los Marinos s/n, Fracc Isla de Navidad, 28838 Col.
         </Text>
 
@@ -104,14 +104,17 @@ const styles = StyleSheet.create({
     paddingVertical: 60,
     paddingHorizontal: 40,
   },
-
+  ralewayLight: {
+    fontFamily: 'Raleway_300Light',
+  },
   message:{
-    fontFamily: 'CormorantGaramond_300Light',
-    fontSize: 19,
+    fontFamily: 'Raleway_300Light',
+    fontSize: 17,
     marginTop: 5,
     color: '#FFFFFF',
     textAlign: 'center',
     marginBottom: 10,
+    maxWidth: '30%',
   },
   monogramContainer: {
     width: "30%",
@@ -193,6 +196,7 @@ const styles = StyleSheet.create({
   },
   portraitMessage:{
     fontSize: 14,
+    maxWidth: '90%',
     letterSpacing: 2,
   },
 
