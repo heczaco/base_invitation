@@ -139,6 +139,13 @@ export default function Menu({ currentPage, onPageChange, rsvpActive }: MenuProp
     startHideTimer();
   };
 
+  const hideTextNow = () => {
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+    }
+    setTextVisible(false);
+  };
+
   useEffect(() => {
     if (!isLandscape) {
       startHideTimer();
@@ -176,11 +183,15 @@ export default function Menu({ currentPage, onPageChange, rsvpActive }: MenuProp
   }
   
   return (
-    <View style={[
-      styles.divMenu,
-      isLandscape ? styles.landscapeMenu : styles.portraitMenu,
-      currentCustomStyle,
-    ]}>
+    <>
+      {!isLandscape && textVisible && (
+        <Pressable style={styles.outsideOverlay} onPress={hideTextNow} />
+      )}
+      <View style={[
+        styles.divMenu,
+        isLandscape ? styles.landscapeMenu : styles.portraitMenu,
+        currentCustomStyle,
+      ]}>
       {isLandscape && (
         <View style={styles.logoMenu}>
           <Image 
@@ -216,6 +227,7 @@ export default function Menu({ currentPage, onPageChange, rsvpActive }: MenuProp
         )}
       </View>
     </View>
+    </>
   );
 }
 
@@ -223,6 +235,14 @@ const styles = StyleSheet.create({
   divMenu: {
     position: 'absolute',
     zIndex: 15,
+  },
+  outsideOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 10,
   },
   landscapeMenu: {
     flexDirection: 'row',
@@ -293,7 +313,7 @@ const styles = StyleSheet.create({
   portraitMenu: {
     flexDirection: 'column',
     right: '7%',
-    top: '74%',
+    top: '85%',
     transform: [{ translateY: -150 }],
     marginRight: -5,
     width: '40%',

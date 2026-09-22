@@ -31,32 +31,34 @@ export default function RegalosScreen() {
                 contentFit="contain"
                 />
             </View>
-            
+            <View style={[!isLandscape && styles.contentBgPortrait]}> 
+              {/* Venue Name */}
+              {!isLandscape && (<Text style={styles.titleNames}>GISELA E ISRAEL</Text>)}
+              <Text style={[styles.giftMessage, !isLandscape && styles.giftMessagePortrait]}>
+                Su presencia y compañía siempre va a ser nuestro
+                mejor regalo. Sin embargo, si desean obsequiarnos
+                algo más pueden hacerlo a través de:
+              </Text>
+    
+              <Pressable onPress={copyAccountNumber}>
+                <View style={[styles.giftContainer, !isLandscape && styles.giftContainerPortrait]}>
+                  <Image
+                      source={require('@/assets/images/regalos/cuenta.svg')}
+                      style={generalStyles.imageStd}
+                      contentFit="contain"
+                      />
+                </View>
+              </Pressable>
+              <Text style={[styles.cuentaText, !isLandscape && styles.cuentaTextPortrait]}>
+                <Text style={styles.bold}> BBVA <br/></Text>
+                Gisela Guadalupe Sanchez Motilla<br/>
+                <Text style={styles.bold}>CUENTA<br/></Text>
+                153 940 9149<br/>
+                <Text style={styles.bold}>CLABE<br/></Text>
+                012 680 01539409149 0
+              </Text>
           
-            {/* Venue Name */}
-            <Text style={[styles.giftMessage, !isLandscape && styles.giftMessagePortrait]}>
-              Su presencia y compañía siempre va a ser nuestro
-              mejor regalo. Sin embargo, si desean obsequiarnos
-              algo más pueden hacerlo a través de:
-            </Text>
-  
-            <Pressable onPress={copyAccountNumber}>
-              <View style={[styles.giftContainer, !isLandscape && styles.giftContainerPortrait]}>
-                <Image
-                    source={require('@/assets/images/regalos/cuenta.svg')}
-                    style={generalStyles.imageStd}
-                    contentFit="contain"
-                    />
-              </View>
-            </Pressable>
-            <Text style={[styles.cuentaText, !isLandscape && styles.cuentaTextPortrait]}>
-              <Text style={styles.bold}> BBVA <br/></Text>
-              Gisela Guadalupe Sanchez Motilla<br/>
-              <Text style={styles.bold}>CUENTA<br/></Text>
-              153 940 9149<br/>
-              <Text style={styles.bold}>CLABE<br/></Text>
-              012 680 01539409149 0
-            </Text>
+            </View>
         </View>
       </ImageBackground>
     );
@@ -83,7 +85,7 @@ export default function RegalosScreen() {
       alignSelf: 'center',
     },
     giftMessage: {
-      fontFamily: 'Raleway_500Medium',
+      fontFamily: 'Raleway_400Regular',
       fontSize: 18,
       maxWidth: '80%',
       color: '#FFFFFF',
@@ -110,35 +112,44 @@ export default function RegalosScreen() {
       marginTop: 4,
     },
     bold:{
-      
+      marginTop: 88,
       fontWeight: 'bold',
     },
-    // 
     contentPortrait: {
       backgroundColor:"transparent",
       top: "0%",
       left: "5%",
       width: "90%",
     },
+    // portrait styles
     monogramPortrait: {
-      width: '25%',
+      width: '35%',
       aspectRatio: 1,
       marginTop: 15,
       marginBottom: 15,
       alignSelf: 'center',
     },
+    contentBgPortrait: {
+      backgroundColor:"#252836BB",
+      padding: 20,
+      borderRadius: 15,
+    },
+    titleNames: {
+      fontSize: 32,
+      fontFamily: 'CormorantGaramond_400Regular',
+      letterSpacing: 0,
+      color: '#FFFFFF',
+      textAlign: 'center',
+    },
     giftMessagePortrait: {
       fontSize: 13,
-      fontFamily: 'Raleway_500Medium',
+      fontFamily: 'Raleway_400Regular',
       color: '#FFFFFF',
-      textShadowColor: 'black',
-      textShadowOffset: { width: 1, height: 1 },
-      textShadowRadius: 1,
       textAlign: 'center',
       alignSelf: 'center',
-      marginBottom: 15,
-      width: '100%',
-      maxWidth: "100%",
+      marginBottom: 10,
+      minWidth: "98%",
+      maxWidth: "98%",
     },
     giftContainerPortrait: {
       marginTop: 0,
