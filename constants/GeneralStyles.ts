@@ -21,4 +21,7 @@ export const generalStyles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  textBold: {
+    fontWeight: 'bold',
+  },
 });

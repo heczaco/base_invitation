@@ -47,7 +47,12 @@ export default function RecepcionScreen() {
         {/* Additional Info */}
         <Text style={[styles.info, !isLandscape && styles.infoPortrait]}>
           Circuito de los Marinos s/n, Fracc Isla{'\n'}
-          Navidad, 28838 Col.
+          Navidad, 28838 Col.ñ{'\n'}
+          {'\n'}
+          <Text style={[generalStyles.textBold]}>
+          - No Niños{'\n'}
+          - Se recomienda traer vaso térmico (tipo YETI)
+        </Text>
         </Text>
 
         {/* Information */}
@@ -103,7 +108,7 @@ const styles = StyleSheet.create({
   },
   itinerary: {
     marginTop: "3%",
-    marginLeft: "8%",
+    marginLeft: "5%",
     width: '40%',
     height: '100%',
     paddingBottom: "5%",
@@ -142,7 +147,10 @@ const styles = StyleSheet.create({
   infoPortrait: {
   },
   itineraryPortrait: {
-    width: '90%',
-    height: '100%',
+    marginTop: 15,
+    marginLeft: 0,
+    left: "5%",
+    width: '95%',
+    aspectRatio: 1,
   },
 });
