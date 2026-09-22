@@ -68,6 +68,7 @@ export default function InformacionScreen() {
           </Pressable>
         </View>
 
+        <Text style={[styles.notice, !isLandscape && styles.noticePortrait]}>Recomendamos reservar con anticipación para garantizar disponibilidad. Asegura tu estancia antes del 7 de Noviembre</Text>
         <Text style={[styles.notice, !isLandscape && styles.noticePortrait]}>ÚNICO MEDIO PARA RESERVAR Y OBTENER TARIFA ESPECIAL</Text>
         {/* Information */}
         <View style={isLandscape ? styles.info : styles.infoPortrait}>

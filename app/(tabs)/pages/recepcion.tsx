@@ -50,6 +50,12 @@ export default function RecepcionScreen() {
           Navidad, 28838 Col.
         </Text>
 
+        {/* Additional Info */}
+        <Text style={[styles.info, !isLandscape && styles.infoPortrait]}>
+          - No Niños{'\n'}
+          - Se recomienda traer vaso térmico (tipo YETI)
+        </Text>
+
         {/* Information */}
         <View style={isLandscape ? styles.itinerary : styles.itineraryPortrait}>
           <Image
