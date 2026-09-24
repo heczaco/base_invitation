@@ -23,9 +23,9 @@ export default function InicioScreen({ invitado1 = '', invitado2 = '' }: InicioS
   let message = '';
   if (invitado1 !== '') {
     if (invitado2 !== '') {
-      message = 'Compartimos el inicio de nuestra historia juntos, y queremos sean parte de este momento especial.';
+      message = 'Compartimos el inicio de nuestra historia juntos, y queremos que sean parte de este momento especial.';
     } else {
-      message = 'Compartimos el inicio de nuestra historia juntos, y queremos seas parte de este momento especial.';
+      message = 'Compartimos el inicio de nuestra historia juntos, y queremos que seas parte de este momento especial.';
     }
   }
   

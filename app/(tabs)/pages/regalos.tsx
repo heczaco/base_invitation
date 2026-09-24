@@ -35,9 +35,9 @@ export default function RegalosScreen() {
               {/* Venue Name */}
               {!isLandscape && (<Text style={styles.titleNames}>GISELA E ISRAEL</Text>)}
               <Text style={[styles.giftMessage, !isLandscape && styles.giftMessagePortrait]}>
-                Su presencia y compañía siempre va a ser nuestro
+                Su presencia y compañía siempre será nuestro
                 mejor regalo. Sin embargo, si desean obsequiarnos
-                algo más pueden hacerlo a través de:
+                algo más, pueden hacerlo a través de:
               </Text>
     
               <Pressable onPress={copyAccountNumber}>
@@ -51,7 +51,7 @@ export default function RegalosScreen() {
               </Pressable>
               <Text style={[styles.cuentaText, !isLandscape && styles.cuentaTextPortrait]}>
                 <Text style={styles.bold}> BBVA <br/></Text>
-                Gisela Guadalupe Sanchez Motilla<br/>
+                Gisela Guadalupe Sánchez Motilla<br/>
                 <Text style={styles.bold}>CUENTA<br/></Text>
                 153 940 9149<br/>
                 <Text style={styles.bold}>CLABE<br/></Text>

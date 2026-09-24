@@ -33,7 +33,7 @@ export default function CeremoniaScreen() {
         {/* Message */}
         <Text style={[styles.message, !isLandscape && styles.portraitMessage]}>
           Nos hace muy felices compartir contigo
-          nuestra union en matrimonio y la celebración
+          nuestra unión en matrimonio y la celebración
           del comienzo de esta nueva etapa
         </Text>
       
@@ -80,7 +80,7 @@ export default function CeremoniaScreen() {
       
         {/* Address */}
         <Text style={[styles.address, styles.ralewayLight, !isLandscape && styles.portraitAddress]}>
-          Circuito de los Marinos s/n, Fracc Isla de Navidad, 28838 Col.
+          Circuito de los Marinos s/n, Fracc. Isla de Navidad, 28838 Col.
         </Text>
 
       </ScrollView>

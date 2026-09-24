@@ -162,9 +162,9 @@ export default function Menu({ currentPage, onPageChange, rsvpActive }: MenuProp
       }
     };
   }, [isLandscape]);
-  var currentCustomStyle = null;
+  let currentCustomStyle = null;
   currentCustomStyle = {backgroundColor: 'transparent'};
-  var currentMonogram = require('@/assets/images/monogram_white.svg');
+  let currentMonogram = require('@/assets/images/monogram_white.svg');
   switch (currentPage) {
     case 'inicio':
     case 'ceremonia':
@@ -215,7 +215,7 @@ export default function Menu({ currentPage, onPageChange, rsvpActive }: MenuProp
           VESTIMENTA
         </MenuButton>
         <MenuButton id="informacion" active={true} currentPage={currentPage} onPress={onPageChange} textVisible={textVisible} onHover={showText}>
-          INFORMACION
+          INFORMACIÓN
         </MenuButton>
         <MenuButton id="regalos" active={true} currentPage={currentPage} onPress={onPageChange} textVisible={textVisible} onHover={showText}>
           MESA DE REGALOS

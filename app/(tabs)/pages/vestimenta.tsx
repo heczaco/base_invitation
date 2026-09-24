@@ -45,7 +45,7 @@ export default function VestimentaScreen() {
               <Text style={styles.dressCodeBold}>Mujeres:</Text> Vestido.
             </Text>
             <Text style={[styles.dressCodeInfo, !isLandscape && styles.dressCodeInfoPortrait]}>
-              La celebración será en arena, por lo que recomendamos elegir calzado cómodo
+              La celebración será en la arena, por lo que recomendamos elegir calzado cómodo.
             </Text>
             <Text style={[styles.place, !isLandscape && styles.placePortrait]}>
               Playa del Mesón Doña Paz

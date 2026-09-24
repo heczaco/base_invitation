@@ -41,16 +41,16 @@ export default function RecepcionScreen() {
         </View>
         {/* Map Button */}
         <Pressable style={[styles.button, !isLandscape && styles.buttonPortrait]} onPress={openMap}>
-          <Text style={[styles.buttonText, !isLandscape && styles.buttonTextPortrait]}>UBICACION</Text>
+          <Text style={[styles.buttonText, !isLandscape && styles.buttonTextPortrait]}>UBICACIÓN</Text>
         </Pressable>
 
         {/* Additional Info */}
         <Text style={[styles.info, !isLandscape && styles.infoPortrait]}>
-          Circuito de los Marinos s/n, Fracc Isla{'\n'}
-          Navidad, 28838 Col.ñ{'\n'}
+          Circuito de los Marinos s/n, Fracc. Isla{'\n'}
+          Navidad, 28838 Col.{'\n'}
           {'\n'}
           <Text style={[generalStyles.textBold]}>
-          - No Niños{'\n'}
+          - NO NIÑOS{'\n'}
           - Se recomienda traer vaso térmico (tipo YETI)
         </Text>
         </Text>
@@ -58,7 +58,7 @@ export default function RecepcionScreen() {
         {/* Information */}
         <View style={isLandscape ? styles.itinerary : styles.itineraryPortrait}>
           <Image
-            source={require('@/assets/images/recepcion/itinerario.png')}
+            source={require('@/assets/images/recepcion/itinerario.svg')}
             style={generalStyles.imageStd}
             contentFit="contain"
             />

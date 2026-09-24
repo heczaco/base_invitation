@@ -32,7 +32,7 @@ export default function InformacionScreen() {
 
         <View style={[styles.hotelSection, !isLandscape && styles.hotelSectionPortrait]}>
           <View style={[styles.hotelColumn, !isLandscape && styles.hotelColumnPortrait]}>
-            <Text style={[styles.columnHeading, !isLandscape && styles.columnHeadingPortrait]}>HOTEL CEDE</Text>
+            <Text style={[styles.columnHeading, !isLandscape && styles.columnHeadingPortrait]}>HOTEL SEDE</Text>
             <Text style={[styles.hotelName, !isLandscape && styles.hotelNamePortrait]}>
               GRAND ISLA NAVIDAD{`\n`}GOLF &amp; SPA RESORT WITH MARINA
             </Text>
