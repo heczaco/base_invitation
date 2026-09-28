@@ -95,6 +95,7 @@ function MenuButton({ id, active, currentPage, onPress, children, textVisible, o
       ) : (
         <>
           <Animated.Text 
+            numberOfLines={1}
             style={[
               styles.buttonTextPortrait, 
               pageTextStyle,
@@ -328,6 +329,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    height: 17,
+    overflow: 'hidden',
     marginVertical: 8,
     paddingRight: 0,
     width: '100%',
