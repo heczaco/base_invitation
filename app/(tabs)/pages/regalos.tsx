@@ -2,7 +2,9 @@ import { generalStyles } from '@/constants/GeneralStyles';
 import * as Clipboard from 'expo-clipboard';
 import { Image } from 'expo-image';
 import React from 'react';
-import { ImageBackground, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { ImageBackground, Linking, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+
+
 export default function RegalosScreen() {
 
      const { width, height } = useWindowDimensions();
@@ -11,6 +13,10 @@ export default function RegalosScreen() {
      const copyAccountNumber = async () => {
        await Clipboard.setStringAsync('012680015394091490');
        alert('Número de cuenta copiado al portapapeles');
+     };
+     const goToLiverpool = async (eventNumber: string) => {
+       Linking.openURL(`https://mesaderegalos.liverpool.com.mx/milistaderegalos/${eventNumber}`);
+       // Implement navigation to Liverpool gift page or external link
      };
 
   return (
@@ -57,7 +63,19 @@ export default function RegalosScreen() {
                 <Text style={styles.bold}>CLABE<br/></Text>
                 012 680 01539409149 0
               </Text>
-          
+              <Pressable onPress={() => goToLiverpool('60049317')}>
+                <View style={[styles.giftContainerLiverpool, !isLandscape && styles.giftContainerLiverpoolPortrait]}>
+                  <Image
+                      source={require('@/assets/images/regalos/liverpool.png')}
+                      style={generalStyles.imageStd}
+                      contentFit="contain"
+                      />
+                </View>
+              </Pressable>
+              <Text style={[styles.cuentaText, !isLandscape && styles.cuentaTextPortrait]}>
+                <Text style={styles.bold}> Liverpool <br/></Text>
+                60049317
+              </Text>
             </View>
         </View>
       </ImageBackground>
@@ -96,10 +114,19 @@ export default function RegalosScreen() {
     },
     giftContainer: {
       opacity: 1,
-      marginTop: 10,
-      marginBottom: 10,
+      marginTop: 30,
+      
       width: 50,
-      aspectRatio: 1,
+      height: 40,
+      alignSelf: 'center'
+    },
+    giftContainerLiverpool: {
+      opacity: 1,
+      
+      marginBottom: 10,
+      width: 40,
+      height: 40,
+      marginTop: 30,
       alignSelf: 'center'
     },
     cuentaText: {
@@ -152,7 +179,12 @@ export default function RegalosScreen() {
       maxWidth: "98%",
     },
     giftContainerPortrait: {
-      marginTop: 0,
+      marginTop: 20,
+    },
+    giftContainerLiverpoolPortrait: {
+      marginTop: 20,
+      
+
     },
     cuentaTextPortrait: {
     },
