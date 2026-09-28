@@ -190,6 +190,7 @@ export default function Menu({ currentPage, onPageChange, rsvpActive }: MenuProp
       <View style={[
         styles.divMenu,
         isLandscape ? styles.landscapeMenu : styles.portraitMenu,
+        !isLandscape && !textVisible && styles.portraitMenuHidden,
         currentCustomStyle,
       ]}>
       {isLandscape && (
@@ -318,6 +319,10 @@ const styles = StyleSheet.create({
     marginRight: -5,
     width: '40%',
     minWidth: 200,
+  },
+  portraitMenuHidden: {
+    width: '15%',
+    minWidth: 0,
   },
   portraitButton: {
     flexDirection: 'row',
