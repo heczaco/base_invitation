@@ -17,7 +17,7 @@ export default function InformacionScreen() {
   }
 
   const messageWhats = "Hola, me gustaría hacer una reservación para la boda de Gisela e Israel; código de reserva: BODAGISEISRA";
-  const openWhatsApp = () => Linking.openURL(`https://wa.me/526122186591?text=${encodeURIComponent(messageWhats)}`);
+  const openWhatsApp = () => Linking.openURL(`https://wa.me/523143310513?text=${encodeURIComponent(messageWhats)}`);
   const callHotel = () => Linking.openURL('tel:+523143310500');
   const callTollFree = () => Linking.openURL('tel:8008492373');
 
