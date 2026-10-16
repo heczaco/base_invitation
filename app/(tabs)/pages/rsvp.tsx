@@ -81,9 +81,9 @@ export default function RsvpScreen() {
   };
 
   const openWhatsApp = () => {
-    const phoneNumber = '+4447654000'; // Replace with wedding planner's number
+    const phoneNumber = '524442570714'; // Replace with wedding planner's number
     const waveEmoji = String.fromCodePoint(0x1F44B);
-    const message = `Hola, tengo problemas con mi confirmación de la boda de Gisela e Israel ${waveEmoji}`;
+    const message = `Hola Gisela ${waveEmoji}, tengo problemas con mi confirmación de tu boda`;
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     Linking.openURL(url);
   };
