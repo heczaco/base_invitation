@@ -238,9 +238,12 @@ const styles = StyleSheet.create({
     letterSpacing: 4,
   },
   portraitPlace: {
+    alignItems: 'center',
+    textAlign: 'center',
   },
   portraitText: {
-    
+    alignItems: 'center',
+    textAlign: 'center',
   },
   portraitDate: {
     fontSize: 20,
