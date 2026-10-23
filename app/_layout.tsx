@@ -80,10 +80,10 @@ export default function RootLayout() {
   return (
     <GuestProvider>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <meta property="og:title" content="Gisela e Israel ♡ 07 de Mayo del 2027" />
-      <meta property="og:description" content="Nuestra historia continúa. Sé parte de ella." />
-      <meta property="og:image" content="https://gisela-e-israel.onrender.com/previewWhats.png" />
-      <meta property="og:url" content="https://GiselaeIsrael.com" />
+      <meta property="og:title" content="Zulema y José Manuel ♡ 8 de Enero del 2027" />
+      <meta property="og:description" content="Acompáñanos a escribir este capítulo" />
+      <meta property="og:image" content="https://zulemaymanuel.onrender.com/previewWhats.png" />
+      <meta property="og:url" content="https://zulemaymanuel.com" />
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="index" />
           <Stack.Screen name="+not-found" />
