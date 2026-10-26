@@ -1,5 +1,6 @@
 import { GuestProvider } from '@/contexts/GuestContext';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import './fontStyles';
 import {
   Raleway_100Thin,
   Raleway_100Thin_Italic,

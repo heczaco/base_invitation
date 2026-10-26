@@ -1,0 +1,154 @@
+import { generalStyles } from '@/constants/GeneralStyles';
+import React, { useRef } from 'react';
+import { ImageBackground, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+
+export default function VestimentaScreen() {
+  const { width, height } = useWindowDimensions();
+  const isLandscape = width > height;
+  const scrollViewRef = useRef<ScrollView>(null);
+  const imageContainerRef = useRef<View>(null);
+
+  const scrollToImage = () => {
+    imageContainerRef.current?.measureLayout(
+      scrollViewRef.current as any,
+      (x, y) => {
+        scrollViewRef.current?.scrollTo({ y, animated: true });
+      },
+      () => {}
+    );
+  };
+
+  return (
+    <ImageBackground
+      source={
+        isLandscape
+          ? require('@/assets/images/vestimenta/bg.png')
+          : require('@/assets/images/vestimenta/bg_portrait.png')
+      }
+      style={[styles.bg, isLandscape ? generalStyles.landscapeBackground_100: generalStyles.portraitBackground]}
+      resizeMode="cover">
+      
+      <View style={[styles.content, !isLandscape && styles.contentPortrait]}>
+          {/* Text Content Container */}
+          
+
+            {/* Title */}
+            <Text style={[styles.title, !isLandscape && styles.titlePortrait]}>
+              Dress Code
+            </Text>
+
+            {/* Dress Code Type */}
+            <Text style={[styles.dressCode, !isLandscape && styles.dressCodePortrait]}>
+              <Text style={styles.dressCodeBold}>Hombres:</Text> Guayabera.
+            </Text>
+            <Text style={[styles.dressCode, !isLandscape && styles.dressCodePortrait]}>
+              <Text style={styles.dressCodeBold}>Mujeres:</Text> Vestido.
+            </Text>
+            <Text style={[styles.dressCodeInfo, !isLandscape && styles.dressCodeInfoPortrait]}>
+              La celebración será en la arena, por lo que recomendamos elegir calzado cómodo.
+            </Text>
+            <Text style={[styles.place, !isLandscape && styles.placePortrait]}>
+              Playa del Mesón Doña Paz
+            </Text>
+            {/* Hotels */}
+          </View>
+      
+    </ImageBackground>
+  );
+}
+
+const styles = StyleSheet.create({
+  bg:{
+    backgroundColor: '#D9CBC2',
+  },
+  content: {
+    flex: 1,
+    position: 'absolute',
+    width: "50%",
+    height: '100%',
+    paddingTop: "13%",
+    justifyContent: 'flex-start',
+    right: "5%",
+  },
+  textContainer: {
+    position: 'absolute',
+    width: '50%',
+    height: '100%',
+    right: 0,
+    alignItems: 'center',
+
+  },
+  title: {
+    fontFamily: 'Cormorant Garamond',
+    fontWeight: '700',
+    fontSize: 40  ,
+    letterSpacing: 3,
+    color: '#112250',
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+  dressCode: {
+    fontFamily: 'Cormorant Garamond',
+    fontWeight: '300',
+    fontSize: 24,
+    letterSpacing: 2,
+    color: '#112250',
+    textAlign: 'center',
+    
+  },
+  dressCodeBold: {
+    fontFamily: 'Cormorant Garamond',
+    fontWeight: '700',
+  },
+  dressCodeInfo: {
+    fontFamily: 'Cormorant Garamond',
+    fontWeight: '300',
+    fontSize: 16,
+    letterSpacing: 1,
+    color: '#112250',
+    alignSelf: 'center',
+    textAlign: 'center',
+    maxWidth: '50%',
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  place: {
+    fontFamily: 'Cormorant Garamond',
+    fontWeight: '500',
+    fontSize: 22,
+    letterSpacing: 1,
+    color: '#112250',
+    textAlign: 'center',
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  // Portrait styles
+  contentPortrait: {
+    paddingTop: "0%",
+    textAlign: 'left',
+    height: '60%',
+    width: '50%',
+    right: '0%',
+  },
+  titlePortrait: {
+    marginTop: "8%",
+    textAlign: 'left',
+    fontSize: 30,
+  },
+  dressCodePortrait: {
+    fontSize: 22,
+    textAlign: 'left',
+  },
+  dressCodeInfoPortrait: {
+    width: '100%',
+    fontSize: 16,
+    marginTop: 2,
+    marginBottom: 2,
+    maxWidth: '100%',
+    textAlign: 'left',
+  },
+  placePortrait: {
+    fontSize: 18,
+    textAlign: 'left',
+  },
+});
