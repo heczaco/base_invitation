@@ -111,10 +111,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
   },
   ralewayLight: {
-    fontFamily: 'Raleway_300Light',
+    fontFamily: 'Raleway',
+    fontWeight: '300',
   },
   message:{
-    fontFamily: 'Raleway_300Light',
+    fontFamily: 'Raleway',
+    fontWeight: '300',
     fontSize: 17,
     marginTop: 5,
     color: '#FFFFFF',

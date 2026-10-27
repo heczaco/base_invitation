@@ -78,7 +78,8 @@ scrollView: {
   },
   columnHeading: {
     color: '#000000',
-    fontFamily: 'Montserrat_700Bold',
+    fontFamily: 'Montserrat',
+    fontWeight: '700',
     fontSize: 25,
     letterSpacing: 4,
     textAlign: 'center',

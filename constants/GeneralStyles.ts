@@ -9,6 +9,14 @@ export const generalStyles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  landscapeBackground: {
+    flex: 1,
+    position: 'relative',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+  },
   portraitBackground: {
     flex: 1,
     position: 'fixed',
@@ -52,8 +60,16 @@ export const generalStyles = StyleSheet.create({
   textBold: {
     fontWeight: 'bold',
   },
-  generalText: {
+  generalTextMontserrat: {
     fontSize: 16,
     fontFamily: 'Montserrat',
+  },
+  generalTextRaleway: {
+    fontSize: 16,
+    fontFamily: 'Raleway',
+  },
+  generalTextCormorant: {
+    fontSize: 16,
+    fontFamily: 'Cormorant Garamond',
   }
 });

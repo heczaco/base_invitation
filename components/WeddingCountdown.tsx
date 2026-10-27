@@ -3,17 +3,22 @@ import { StyleSheet, Text, View } from 'react-native';
 
 interface WeddingCountdownProps {
   isLandscape: boolean;
+  weddingDate: Date;
 }
 
-export function WeddingCountdown({ isLandscape }: WeddingCountdownProps) {
-  const weddingDate = new Date('2027-05-07T18:00:00');
-  const getTimeUntilWedding = () => Math.max(0, Math.floor((weddingDate.getTime() - Date.now()) / 1000));
-  const [timeUntilWedding, setTimeUntilWedding] = useState(getTimeUntilWedding);
+const getTimeUntilWedding = (weddingDate: Date) =>
+  Math.max(0, Math.floor((weddingDate.getTime() - Date.now()) / 1000));
+
+export function WeddingCountdown({ isLandscape, weddingDate }: WeddingCountdownProps) {
+  const [timeUntilWedding, setTimeUntilWedding] = useState(() => getTimeUntilWedding(weddingDate));
 
   useEffect(() => {
-    const interval = setInterval(() => setTimeUntilWedding(getTimeUntilWedding()), 1000);
+    setTimeUntilWedding(getTimeUntilWedding(weddingDate));
+    const interval = setInterval(() => {
+      setTimeUntilWedding(getTimeUntilWedding(weddingDate));
+    }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [weddingDate]);
 
   const countdownUnits = [
     { value: Math.floor(timeUntilWedding / 86400), label: 'DÍAS' },
@@ -51,22 +56,24 @@ const styles = StyleSheet.create({
   countdown: {
     alignItems: 'center',
     verticalAlign: 'middle',
+    
   },
   countdownUnits: {
     flexDirection: 'row',
     alignItems: 'flex-start',
+    marginTop: 20,
   },
   countdownUnit: {
     alignItems: 'center',
   },
   countdownValue: {
-    fontFamily: 'Cormorant Garamond',
+    fontFamily: 'Montserrat',
     fontWeight: '300',
     color: 'white',
     textAlign: 'center',
   },
   countdownLabel: {
-    fontFamily: 'Cormorant Garamond',
+    fontFamily: 'Montserrat',
     fontWeight: '300',
     color: 'white',
     textAlign: 'center',

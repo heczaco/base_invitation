@@ -94,7 +94,8 @@ export default function RegalosScreen() {
       alignSelf: 'center',
     },
     giftMessage: {
-      fontFamily: 'Raleway_400Regular',
+      fontFamily: 'Raleway',
+      fontWeight: '400',
       fontSize: 18,
       maxWidth: '80%',
       color: '#FFFFFF',
@@ -162,7 +163,8 @@ export default function RegalosScreen() {
     },
     giftMessagePortrait: {
       fontSize: 13,
-      fontFamily: 'Raleway_400Regular',
+      fontFamily: 'Raleway',
+      fontWeight: '400',
       color: '#FFFFFF',
       textAlign: 'center',
       alignSelf: 'center',

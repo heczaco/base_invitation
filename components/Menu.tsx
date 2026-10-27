@@ -163,18 +163,16 @@ export default function Menu({ currentPage, onPageChange, rsvpActive }: MenuProp
     };
   }, [isLandscape]);
   let currentCustomStyle = null;
-  currentCustomStyle = {backgroundColor: 'transparent'};
+  currentCustomStyle = {};
   let currentMonogram = require('@/assets/images/monogram_light_green.svg');
   switch (currentPage) {
     case 'inicio':
     case 'ceremonia':
     case 'regalos':
     case 'rsvp':
-      break;
     case 'informacion':
     case 'recepcion':
     case 'vestimenta':
-
     default:
       break;
   }
@@ -251,7 +249,7 @@ const styles = StyleSheet.create({
     height: '13%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 1)',
+    backgroundColor: 'white',
   },
   logoMenu: {
     position: 'absolute',
@@ -267,6 +265,7 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    backgroundColor: 'transparent',
   },
   logoImage: {
     width: '100%',

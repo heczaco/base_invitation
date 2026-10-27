@@ -4,6 +4,7 @@ import { Image } from 'expo-image';
 import React from 'react';
 import { ImageBackground, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
+
 interface InicioScreenProps {
   invitado1?: string;
   invitado2?: string;
@@ -12,6 +13,7 @@ interface InicioScreenProps {
 export default function InicioScreen({ invitado1 = '', invitado2 = '' }: InicioScreenProps) {
   const { width, height } = useWindowDimensions();
   const isLandscape = width > height;
+  const weddingDate = new Date('2027-01-08T13:00:00');
   
   // Format guest names
   let guestNames = invitado1.toUpperCase();
@@ -32,12 +34,12 @@ export default function InicioScreen({ invitado1 = '', invitado2 = '' }: InicioS
   return (
     <ImageBackground
       source={isLandscape ? require('@/assets/images/inicio/bg.png') : require('@/assets/images/inicio/portrait_bg.png')}
-      style={isLandscape ? generalStyles.landscapeBackground_100 : generalStyles.portraitBackground}
+      style={isLandscape ? generalStyles.landscapeBackground : generalStyles.portraitBackground}
       resizeMode="cover"
     >
-      <View style={isLandscape ? styles.landscapeContainer : styles.portraitContainer}>
+      <View style={isLandscape ? styles.container : styles.portraitContainer}>
         {/* Centered Monogram Logo */}
-        <View style={[styles.logoContainer, isLandscape ? styles.landscapeLogo : styles.portraitLogo]}>
+        <View style={[styles.logoContainer, !isLandscape && styles.portraitLogo]}>
           <Image
             source={require('@/assets/images/monogram_white.svg')}
             style={styles.logo}
@@ -46,17 +48,23 @@ export default function InicioScreen({ invitado1 = '', invitado2 = '' }: InicioS
         </View>
         
         {/* Names and Date */}
-        <View style={isLandscape ? styles.landscapeTextContainer : styles.portraitTextContainer}>
-          <Text style={[styles.names, isLandscape ? styles.landscapeNames : styles.portraitNames]}>
-            GISELA E ISRAEL
-          </Text>
-          <Text style={[styles.date, isLandscape ? styles.landscapeDate : styles.portraitDate]}>
-            Barra de Navidad, Jal. México
-          </Text>
-          <Text style={[styles.date, isLandscape ? styles.landscapeDate : styles.portraitDate]}>
-            07.05.27
-          </Text>
-          <WeddingCountdown isLandscape={isLandscape} />
+        
+        {/*<Text style={[generalStyles.generalTextMontserrat, styles.names, !isLandscape && styles.portraitNames]}>
+          Zulema y Manuel
+        </Text>*/}
+        <Text style={[generalStyles.generalTextMontserrat, styles.date, !isLandscape && styles.portraitDate]}>
+          8 DE ENERO 2027
+        </Text>
+        <Text style={[generalStyles.generalTextMontserrat, styles.date, !isLandscape && styles.portraitDate]}>
+          XILITLA, S.L.P.
+        </Text>
+        <WeddingCountdown isLandscape={isLandscape} weddingDate={weddingDate} />
+        <View style={[styles.namesImage, !isLandscape && styles.portraitNamesImage]}>
+          <Image
+            source={require('@/assets/images/inicio/names.svg')}
+            style={styles.logo}
+            contentFit="contain"
+          />
         </View>
       </View>
     </ImageBackground>
@@ -64,58 +72,46 @@ export default function InicioScreen({ invitado1 = '', invitado2 = '' }: InicioS
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: 80,
+  },
   logoContainer: {
-    width: '60%',
-    height: '40%',
-    maxWidth: 600,
-    maxHeight: 400,
+    width: 200,
+    height: 200,
+    marginBottom: 30,
   },
   logo: {
     width: '100%',
     height: '100%',
   },
   names: {
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '300',
+    fontWeight: 500,
     color: 'white',
-    letterSpacing: 8,
     textTransform: 'uppercase',
-    marginBottom: 8,
+    marginTop: 45,
+    marginBottom: 25,
+    fontSize: 28,
+    letterSpacing: 9,
+    paddingTop: 0,
   },
+
   date: {
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '300',
-    fontSize: 16,
+    fontWeight: 400,
+    fontSize: 20,
     color: 'white',
     letterSpacing: 4,
   },
-  landscapeNames: {
-    fontSize: 28,
-    letterSpacing: 6,
-    marginTop: "5%",
-    paddingTop: 0,
+  namesImage: {
+    width: 300,
+    height: 150,
   },
-  landscapeDate: {
-    fontSize: 22,
-  },
-  landscapeLogo: {
-    height: '22%',
-    marginTop: '-12%',
-  },
-  landscapeTextContainer: {
-    alignItems: 'center',
-    
-  },
-    landscapeContainer: {
-    flex: 1,
-    position: 'absolute',
-    top: 0,
-    width: '30%',
-    height: '100%',
-    alignItems: 'center',
-    left: '3%',
-    justifyContent: 'center',
-  },
+  
   // Portrait styles (if needed in the future)
   portraitContainer: {
     flex: 1,

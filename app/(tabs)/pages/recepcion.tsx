@@ -92,7 +92,9 @@ const styles = StyleSheet.create({
     height: '22%',
   },
   info: {
-    fontFamily: 'Raleway_300Light_Italic',
+    fontFamily: 'Raleway',
+    fontWeight: '300',
+    fontStyle: 'italic',
     fontSize: 11,
     color: '#3B507D',
     textAlign: 'center',
@@ -116,7 +118,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonText: {
-    fontFamily: 'Raleway_500Medium',
+    fontFamily: 'Raleway',
+    fontWeight: '500',
     fontSize: 12,
     letterSpacing: 2,
     color: '#F5F2EC',
