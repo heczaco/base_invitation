@@ -108,8 +108,10 @@ const styles = StyleSheet.create({
     letterSpacing: 4,
   },
   namesImage: {
-    width: 300,
+    position: 'absolute',
+    width: 400,
     height: 150,
+    bottom: 50,
   },
   
   // Portrait styles (if needed in the future)
