@@ -48,8 +48,8 @@ function MenuButton({ id, active, currentPage, onPress, children, textVisible, o
       break;
     case 'recepcion':
     case 'informacion':
-      pageTextStyle = isLandscape ? styles.receptionText : null;
-      pageSeparatorStyle = styles.receptionSeparator;
+      pageTextStyle = isLandscape ? styles.buttonText_option2 : null;
+      pageSeparatorStyle = styles.separator_option2;
       pageCircleStyle = styles.circle_alternative_1;
       pageActiveCircleStyle = styles.activeCircle_alternative_1;
       break;
@@ -57,6 +57,7 @@ function MenuButton({ id, active, currentPage, onPress, children, textVisible, o
   
   const isActive = currentPage === id;
   const activeButtonStyle = isActive ? styles.activeButton : null;
+  const activeTextStyle = isActive ? styles.activeButtonText : null;
   const activeCircleStyle = isActive ? pageActiveCircleStyle ?? styles.activeCircle : null;
   const isFirstButton = id === 'inicio';
   
@@ -88,7 +89,7 @@ function MenuButton({ id, active, currentPage, onPress, children, textVisible, o
       disabled={!active}
     >
       {isLandscape ? (
-        <Text style={[ styles.buttonText, pageTextStyle, isActive && styles.activeButtonText]}>
+        <Text style={[ styles.buttonText, pageTextStyle, activeTextStyle]}>
           {children}
         </Text>
       ) : (
@@ -98,7 +99,7 @@ function MenuButton({ id, active, currentPage, onPress, children, textVisible, o
             style={[
               styles.buttonTextPortrait, 
               pageTextStyle,
-              isActive && styles.activeButtonText,
+              activeTextStyle,
               { 
                 transform: [{ translateX: slideAnim }],
                 opacity: slideAnim.interpolate({
@@ -289,22 +290,25 @@ const styles = StyleSheet.create({
   leftButMenu: {
     borderLeftWidth: 0,
   },
-  receptionSeparator: {
-    borderLeftColor: '#878E7E',
-  },
   buttonText: {
+    fontFamily: 'Cormorant Garamond',
     fontSize: 16,
-    color: '#878E7E',
+    color: '#000000',
     fontWeight: '300',
     textAlign: 'center',
   },
-  receptionText: {
-    color: '#878E7E',
-  },
   activeButton: {},
   activeButtonText: {
+    
+    fontWeight: '600',
   },
   
+  separator_option2: {
+    borderLeftColor: '#878E7E',
+  },
+  buttonText_option2: {
+    color: '#878E7E',
+  },
   // Portrait menu background styles (if needed in the future)
   portraitMenu: {
     flexDirection: 'column',
@@ -332,8 +336,8 @@ const styles = StyleSheet.create({
   buttonTextPortrait: {
     fontSize: 13,
     color: '#FFFFFF',
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '300',
+    fontFamily: 'Raleway',
+    fontWeight: '400',
     fontStyle: 'italic',
     textAlign: 'left',
     width: "60%",

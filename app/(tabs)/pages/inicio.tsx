@@ -13,7 +13,7 @@ interface InicioScreenProps {
 export default function InicioScreen({ invitado1 = '', invitado2 = '' }: InicioScreenProps) {
   const { width, height } = useWindowDimensions();
   const isLandscape = width > height;
-  const weddingDate = new Date('2027-01-08T13:00:00');
+  const weddingDate = new Date('2027-01-08T16:00:00');
   
   // Format guest names
   let guestNames = invitado1.toUpperCase();
@@ -118,15 +118,16 @@ const styles = StyleSheet.create({
   portraitContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     height: '100%',
+    width: '100%',
   },
   portraitLogo: {
-    width: '28%',
-    height: '25%',
-    top: 0,
-    marginTop: "-65%",
-    marginBottom: "5%",
+    width: 130,
+    height: 130,
+    marginTop: 100,
+    marginBottom: 30,
+    
   },
   portraitNames: {
     fontSize: 24,
@@ -136,6 +137,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   portraitDate: {
-    fontSize: 20,
+    fontSize: 16,
+    marginBottom: 0,
   },
+  portraitNamesImage: {
+    position: 'relative',
+    width: 450,
+    height: 50,
+    marginTop: 80,
+
+  }
 });

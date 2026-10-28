@@ -1,7 +1,7 @@
 import { generalStyles } from '@/constants/GeneralStyles';
 import { Image } from 'expo-image';
 import React from 'react';
-import { Linking, Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { ImageBackground, Linking, Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
 export default function RecepcionScreen() {
   const { width, height } = useWindowDimensions();
@@ -13,141 +13,199 @@ export default function RecepcionScreen() {
   };
 
   return (
-      <View style={[styles.content, !isLandscape && styles.contentPortrait]}>
-        {/* Background */}
-        <View style={[isLandscape ? generalStyles.landscapeBackground_100 : 
-          generalStyles.portraitBackground, styles.bg]}/>
-      <ScrollView 
-        style={styles.scrollView} 
-        contentContainerStyle={[styles.content, !isLandscape && styles.content]}
-          showsVerticalScrollIndicator={false}>
+    <ImageBackground
+          source={isLandscape ? require('@/assets/images/recepcion/bg.png') : require('@/assets/images/recepcion/bg_portrait.png')}
+          style={isLandscape ? generalStyles.landscapeBackground : generalStyles.portraitBackground}
+          resizeMode="cover">
+      {!isLandscape && <View style={[generalStyles.portraitBackground]}>
+          <Image source={require('@/assets/images/monogram_white.svg')}
+            style={[{height: 60, aspectRatio: 1, bottom: "5%", left: "5%", position: "absolute"}]}
+            contentFit="cover"
+          />
+        </View>}
+      {/* Background */}
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}>
 
-        {/* Monogram */}
-        <View style={[ styles.monogram, !isLandscape && styles.monogramPortrait]}>
-          <Image
-            source={require('@/assets/images/monogram_green.svg')}
-            style={generalStyles.imageStd}
-            contentFit="contain"
-            />
+        {/* Photo with reception details */}
+        <View style={[styles.detailsContainer, !isLandscape && styles.detailsContainerPortrait]}>
+          <View style={[styles.details, !isLandscape && styles.detailsPortrait]}>
+            <Text style={[styles.time, !isLandscape && styles.timePortrait]}>5:30 pm</Text>
+            <Text style={[styles.venue, !isLandscape && styles.venuePortrait]}>FINCA LA PAGUA</Text>
+            <Pressable style={[styles.button, !isLandscape && styles.buttonPortrait]} onPress={openMap}>
+              <Text style={[styles.buttonText, !isLandscape && styles.buttonTextPortrait]}>UBICACIÓN</Text>
+            </Pressable>
+            <Text style={[styles.info, !isLandscape && styles.infoPortrait]}>
+              Vicente Guerrero 317, Xilitla,{'\n'}
+              79901 Xilitla, S.L.P.
+            </Text>
+          </View>
         </View>
-          
-        
-        {/* Map Button */}
-        <Pressable style={[styles.button, !isLandscape && styles.buttonPortrait]} onPress={openMap}>
-          <Text style={[styles.buttonText, !isLandscape && styles.buttonTextPortrait]}>UBICACIÓN</Text>
-        </Pressable>
 
-        {/* Additional Info */}
-        <Text style={[styles.info, !isLandscape && styles.infoPortrait]}>
-          Circuito de los Marinos s/n, Fracc. Isla{'\n'}
-          Navidad, 28838 Col.{'\n'}
-          {'\n'}
-          <Text style={[generalStyles.textBold]}>
-          - NO NIÑOS{'\n'}
-          - Se recomienda traer vaso térmico (tipo YETI)
-        </Text>
-        </Text>
-
-        {/* Information */}
-        <View style={isLandscape ? styles.itinerary : styles.itineraryPortrait}>
-          <Image
-            source={isLandscape ? require('@/assets/images/recepcion/itinerary.png') : 
-              require('@/assets/images/recepcion/itinerary_portrait.png')}
-            style={generalStyles.imageStd}
-            contentFit="contain"
+        {/* Itinerary */}
+        <View style={isLandscape ? styles.itineraryContainer : styles.itineraryContainerPortrait}>
+          <View style={isLandscape ? styles.itinerary : styles.itineraryPortrait}>
+            <Image
+              source={isLandscape ? require('@/assets/images/recepcion/itinerary.png') :
+                require('@/assets/images/recepcion/itinerary_portrait.png')}
+              style={generalStyles.imageStd}
+              contentFit="contain"
             />
+          </View>
+          {/* Names */}
+          <View style={[styles.names, !isLandscape && styles.namesPortrait]}>
+            <Image
+              source={require('@/assets/images/ceremonia/names_green.svg')}
+              style={generalStyles.imageStd}
+              contentFit="contain"
+            />
+          </View>
         </View>
-        </ScrollView>
-      </View>
-      
-    
+      </ScrollView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   bg: {
-    backgroundColor: '#F5F2EC',
-  },
-  container: {
-    flex: 1,
+    backgroundColor: '#FFFFFF',
   },
   content: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    
   },
   scrollView: {
     flex: 1,
     width: '100%',
   },
-  monogram: {
-    marginTop: "4%",
-    width: '16%',
-    height: '18%',
-    marginBottom: "4%",
+  scrollContent: {
+    alignItems: 'center',
   },
-  information: {
-    width: '30%',
-    height: '22%',
+  photo: {
+    width: '100%',
+    aspectRatio: 1729 / 970,
+    justifyContent: 'flex-end',
   },
-  info: {
-    fontFamily: 'Raleway',
-    fontWeight: '300',
-    fontStyle: 'italic',
-    fontSize: 11,
-    color: '#3B507D',
-    textAlign: 'center',
-    alignSelf: 'center',
-    lineHeight: 22,
-    marginBottom: 15,
+  detailsContainer: {
+    width: '100%',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    aspectRatio: 1729 / 970,
+    paddingRight: '6%',
+    paddingBottom: '15%',
   },
-  itinerary: {
-    marginTop: "3%",
-    marginLeft: "5%",
-    width: '40%',
-    height: '100%',
-    paddingBottom: "5%",
+  details: {
+    width: '25%',
+    height: '60%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  time: {
+    fontFamily: 'Montserrat',
+    fontWeight: '500',
+    fontSize: 20,
+    letterSpacing: 4,
+    color: '#FFFFFF',
+  },
+  venue: {
+    fontFamily: 'Montserrat',
+    fontWeight: '400',
+    fontSize: 15,
+    letterSpacing: 3,
+    color: '#FFFFFF',
+    marginTop: 10,
   },
   button: {
-    backgroundColor: '#3B507D',
+    backgroundColor: '#535D45',
     paddingHorizontal: 20,
-    paddingVertical: 12,
+    paddingVertical: 10,
     borderRadius: 25,
-    marginTop: "1.5%",
-    marginBottom: 10,
+    marginTop: 14,
+    marginBottom: 14,
   },
   buttonText: {
-    fontFamily: 'Raleway',
+    fontFamily: 'Montserrat',
     fontWeight: '500',
     fontSize: 12,
     letterSpacing: 2,
-    color: '#F5F2EC',
+    color: '#FFFFFF',
   },
-  // Landscape styles
+  info: {
+    fontFamily: 'Montserrat',
+    fontWeight: '300',
+    fontStyle: 'italic',
+    fontSize: 12,
+    color: '#FFFFFF',
+    textAlign: 'center',
+    lineHeight: 18,
+  },
+  itinerary: {
+    width: '90%',
+    aspectRatio: 1729 / 400,
+    marginTop: '2%',
+  },
+  itineraryContainer: {
+    width: '90%',
+    backgroundColor: '#FFFFFFED',
+    borderRadius: 10,
+    alignItems: 'center',
+    marginBottom: '3%',
+  },
+  names: {
+    width: '30%',
+    aspectRatio: 3,
+    marginBottom: '3%',
+  },
+  // Portrait styles
+  contentPortrait: {},
+  detailsContainerPortrait: {
+    height: '100%',
+    width: '100%',
+    padding: '0%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  photoPortrait: {
+    aspectRatio: 0.75,
+  },
+  detailsPortrait: {
+    marginTop: '20%',
+    borderRadius: 10,
+    width: '70%',
+    height: '30%',
+    alignItems: 'center',
+    backgroundColor: '#545E46BE',
+  },
+  timePortrait: {
+    fontSize: 16,
+  },
 
-  //portrait styles (if needed in the future)
+  itineraryContainerPortrait: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  venuePortrait: {
+    fontSize: 11,
+  },
   buttonPortrait: {
     paddingVertical: 8,
   },
   buttonTextPortrait: {
-    fontSize: 8,
-  },
-  contentPortrait: {
-  },
-  informationPortrait: {
-    width: '60%',
-    height: '20%',
-  },
-  monogramPortrait: {
+    fontSize: 9,
   },
   infoPortrait: {
+    fontSize: 10,
+    lineHeight: 15,
   },
   itineraryPortrait: {
     marginTop: 15,
-    marginLeft: 0,
-    left: "5%",
     width: '95%',
     aspectRatio: 1,
+  },
+  namesPortrait: {
+    width: '60%',
   },
 });

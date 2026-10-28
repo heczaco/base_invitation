@@ -96,13 +96,13 @@ const styles = StyleSheet.create({
   },
  // Portrait styles
   portraitCountdown: {
-    marginTop: 10,
+    marginTop: 0,
     width: '50%',
     letterSpacing: 5,
   },
   portraitCountdownValue: {
-    fontSize: 32,
-    
+    fontSize: 20,
+    letterSpacing: 2,
   },
   portraitCountdownLabel: {
     fontSize: 10,
