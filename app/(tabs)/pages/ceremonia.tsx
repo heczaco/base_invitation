@@ -247,14 +247,15 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   portraitNames: {
-    width: 200,
+    width: 160,
     height: 55,
+    marginTop: 20,
     marginBottom: 20,
   },
   portraitDate: {
     fontSize: 13,
     letterSpacing: 1,
-    maxWidth: '70%',
+    maxWidth: '65%',
   },
   portraitTime: {
     fontSize: 16,
@@ -265,7 +266,7 @@ const styles = StyleSheet.create({
   portraitChurchName: {
     fontSize: 13,
     letterSpacing: 0,
-    maxWidth: '70%',
+    maxWidth: '60%',
   },
   portraitButton: {
     paddingHorizontal: 16,
@@ -276,7 +277,7 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
   },
   portraitAddress: {
-    maxWidth: '70%',
+    maxWidth: '60%',
     fontSize: 11,
     letterSpacing: 1,
     marginTop: 16,

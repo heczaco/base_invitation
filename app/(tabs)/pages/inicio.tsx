@@ -61,7 +61,7 @@ export default function InicioScreen({ invitado1 = '', invitado2 = '' }: InicioS
         <WeddingCountdown isLandscape={isLandscape} weddingDate={weddingDate} />
         <View style={[styles.namesImage, !isLandscape && styles.portraitNamesImage]}>
           <Image
-            source={require('@/assets/images/inicio/names.svg')}
+            source={require('@/assets/images/names_white.svg')}
             style={styles.logo}
             contentFit="contain"
           />

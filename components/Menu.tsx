@@ -38,18 +38,20 @@ function MenuButton({ id, active, currentPage, onPress, children, textVisible, o
   let pageSeparatorStyle = null;
   let pageCircleStyle = null;
   let pageActiveCircleStyle = null;
-  
+  // Set page-specific styles based on the current page for landscape
+
+  // Set page-specific styles based on the current page for portrait
   switch (currentPage) {
     case 'inicio':
     case 'regalos':
     case 'rsvp':
-    case 'ceremonia':
     case 'vestimenta':
-      break;
     case 'recepcion':
-    case 'informacion':
-      pageTextStyle = isLandscape ? styles.buttonText_option2 : null;
-      pageSeparatorStyle = styles.separator_option2;
+      break;
+      default:
+      case 'informacion':
+    case 'ceremonia':
+      pageTextStyle = styles.buttonTextPortrait_alternative_1;
       pageCircleStyle = styles.circle_alternative_1;
       pageActiveCircleStyle = styles.activeCircle_alternative_1;
       break;
@@ -298,15 +300,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   activeButton: {},
+
   activeButtonText: {
-    
     fontWeight: '600',
   },
   
-  separator_option2: {
+  separator_alternative1: {
     borderLeftColor: '#878E7E',
   },
-  buttonText_option2: {
+  buttonText_alternative1: {
     color: '#878E7E',
   },
   // Portrait menu background styles (if needed in the future)
@@ -354,18 +356,21 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     backgroundColor: 'transparent',
   },
+  
+  activeCircle: {
+    backgroundColor: '#FFFFFF',
+    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  portraitCircle: {
+    marginLeft: 12,
+  },
+  buttonTextPortrait_alternative_1: {
+    color: '#364025',
+  },
   circle_alternative_1: {
     borderColor: '#364025',
   },
   activeCircle_alternative_1: {
     backgroundColor: '#364025',
   },
-  activeCircle: {
-    backgroundColor: '#878E7fE',
-    textShadowColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  portraitCircle: {
-    marginLeft: 12,
-  },
-  
 });

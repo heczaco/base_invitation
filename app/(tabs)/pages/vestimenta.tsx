@@ -1,154 +1,123 @@
 import { generalStyles } from '@/constants/GeneralStyles';
-import React, { useRef } from 'react';
-import { ImageBackground, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Image } from 'expo-image';
+import React, { useRef, useState } from 'react';
+import { ImageBackground, Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+
 
 export default function VestimentaScreen() {
   const { width, height } = useWindowDimensions();
   const isLandscape = width > height;
   const scrollViewRef = useRef<ScrollView>(null);
-  const imageContainerRef = useRef<View>(null);
+  const dressCodeY = useRef(0);
 
   const scrollToImage = () => {
-    imageContainerRef.current?.measureLayout(
-      scrollViewRef.current as any,
-      (x, y) => {
-        scrollViewRef.current?.scrollTo({ y, animated: true });
-      },
-      () => {}
-    );
+    scrollViewRef.current?.scrollTo({ y: dressCodeY.current, animated: true });
   };
-
+  const [bgH, setBgH] = useState(0);
   return (
-    <ImageBackground
-      source={
+    <ImageBackground       
+    source={
         isLandscape
           ? require('@/assets/images/vestimenta/bg.png')
           : require('@/assets/images/vestimenta/bg_portrait.png')
       }
-      style={[styles.bg, isLandscape ? generalStyles.landscapeBackground_100: generalStyles.portraitBackground]}
-      resizeMode="cover">
-      
-      <View style={[styles.content, !isLandscape && styles.contentPortrait]}>
+      style={[generalStyles.landscapeBackground, !isLandscape && generalStyles.portraitBackground]}
+      resizeMode="cover"
+      onLayout={e => setBgH(e.nativeEvent.layout.height)}
+    >
+      <ScrollView
+        ref={scrollViewRef}
+        style={generalStyles.scrollView}
+        contentContainerStyle={[generalStyles.scrollContent]}
+      >
+        <View style={[styles.content, { minHeight: bgH }, !isLandscape && styles.contentPortrait]}>
           {/* Text Content Container */}
-          
-
-            {/* Title */}
-            <Text style={[styles.title, !isLandscape && styles.titlePortrait]}>
-              Dress Code
+            <Text onPress={scrollToImage} style={[styles.description, !isLandscape && styles.descriptionPortrait]}>
+              A continuación encontrarás 
+              la etiqueta del evento,
+              junto con lineamientos e inspiración
+              para tu vestimenta.
             </Text>
-
-            {/* Dress Code Type */}
-            <Text style={[styles.dressCode, !isLandscape && styles.dressCodePortrait]}>
-              <Text style={styles.dressCodeBold}>Hombres:</Text> Guayabera.
-            </Text>
-            <Text style={[styles.dressCode, !isLandscape && styles.dressCodePortrait]}>
-              <Text style={styles.dressCodeBold}>Mujeres:</Text> Vestido.
-            </Text>
-            <Text style={[styles.dressCodeInfo, !isLandscape && styles.dressCodeInfoPortrait]}>
-              La celebración será en la arena, por lo que recomendamos elegir calzado cómodo.
-            </Text>
-            <Text style={[styles.place, !isLandscape && styles.placePortrait]}>
-              Playa del Mesón Doña Paz
-            </Text>
-            {/* Hotels */}
-          </View>
-      
+            {isLandscape && (
+            <Pressable onPress={scrollToImage} style={[styles.names]}>
+              <Image
+                source={require('@/assets/images/names_white.svg')}
+                style={generalStyles.imageStd}
+                contentFit="contain"
+              />
+            </Pressable>)}
+        </View>
+        <View
+          onLayout={e => { dressCodeY.current = e.nativeEvent.layout.y; }}
+          style={[styles.dressCodeContainer, !isLandscape && styles.dressCodeContainerPortrait]}>
+          <Image
+                source={
+                  isLandscape ? require('@/assets/images/vestimenta/dresscode.png') : require('@/assets/images/vestimenta/dresscode_portrait.png')
+                }
+                style={generalStyles.imageStd}
+                contentFit="contain"
+              />
+        </View>
+      </ScrollView>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  bg:{
-    backgroundColor: '#D9CBC2',
-  },
   content: {
-    flex: 1,
-    position: 'absolute',
-    width: "50%",
-    height: '100%',
-    paddingTop: "13%",
-    justifyContent: 'flex-start',
-    right: "5%",
-  },
-  textContainer: {
-    position: 'absolute',
-    width: '50%',
-    height: '100%',
-    right: 0,
+    marginTop: "0%",
+    width: "100%",
     alignItems: 'center',
-
-  },
-  title: {
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '700',
-    fontSize: 40  ,
-    letterSpacing: 3,
-    color: '#112250',
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  dressCode: {
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '300',
-    fontSize: 24,
-    letterSpacing: 2,
-    color: '#112250',
-    textAlign: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: 20,
     
   },
-  dressCodeBold: {
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '700',
+  names:{
+    width: '30%',
+    aspectRatio: 3,
+    marginBottom: '3%',
   },
-  dressCodeInfo: {
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '300',
-    fontSize: 16,
+  description: {
+    fontFamily: 'Montserrat',
+    fontWeight: '400',
+    fontSize: 18,
+    textShadowColor: '#00000033',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 1,
+    elevation: 1,
     letterSpacing: 1,
-    color: '#112250',
-    alignSelf: 'center',
+    maxWidth: '28%',
+    color: '#FFFFFF',
     textAlign: 'center',
-    maxWidth: '50%',
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 25,
+    marginBottom: 25,
   },
-  place: {
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '500',
-    fontSize: 22,
-    letterSpacing: 1,
-    color: '#112250',
-    textAlign: 'center',
-    marginTop: 5,
-    marginBottom: 5,
+  dressCodeContainer: {
+    width: '90%',
+    aspectRatio: 0.1581,
+    backgroundColor: '#FFFFFFDD',
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+    marginBottom: 20,
   },
   // Portrait styles
+  
   contentPortrait: {
-    paddingTop: "0%",
-    textAlign: 'left',
-    height: '60%',
-    width: '50%',
-    right: '0%',
+    justifyContent: 'flex-start',
+    paddingTop: "50%",
   },
-  titlePortrait: {
-    marginTop: "8%",
-    textAlign: 'left',
-    fontSize: 30,
+  descriptionPortrait: {
+    fontSize: 14,
+    fontWeight: '600',
+    width: '65%',
+    maxWidth: '95%',
+    textAlign: 'center',
   },
-  dressCodePortrait: {
-    fontSize: 22,
-    textAlign: 'left',
-  },
-  dressCodeInfoPortrait: {
-    width: '100%',
-    fontSize: 16,
-    marginTop: 2,
-    marginBottom: 2,
-    maxWidth: '100%',
-    textAlign: 'left',
-  },
-  placePortrait: {
-    fontSize: 18,
-    textAlign: 'left',
+  dressCodeContainerPortrait: {
+    width: '95%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

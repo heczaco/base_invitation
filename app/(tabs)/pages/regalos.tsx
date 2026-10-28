@@ -26,35 +26,21 @@ export default function RegalosScreen() {
             ? require('@/assets/images/regalos/bg.png')
             : require('@/assets/images/regalos/bg_portrait.png')
         }
-        style={[styles.container, isLandscape ? generalStyles.landscapeBackground_100: generalStyles.portraitBackground]}
+        style={[styles.container, isLandscape ? generalStyles.landscapeBackground: generalStyles.portraitBackground]}
         resizeMode="cover"
       >
         <View style={[styles.content, !isLandscape && styles.contentPortrait]}>
-            <View style={[styles.monogram, !isLandscape && styles.monogramPortrait]}>
-              <Image
-                source={require('@/assets/images/monogram_white.svg')}
-                style={generalStyles.imageStd}
-                contentFit="contain"
-                />
-            </View>
+            
             <View style={[!isLandscape && styles.contentBgPortrait]}> 
-              {/* Venue Name */}
-              {!isLandscape && (<Text style={styles.titleNames}>GISELA E ISRAEL</Text>)}
+              
               <Text style={[styles.giftMessage, !isLandscape && styles.giftMessagePortrait]}>
                 Su presencia y compañía siempre será nuestro
                 mejor regalo. Sin embargo, si desean obsequiarnos
                 algo más, pueden hacerlo a través de:
               </Text>
 
-              <Text style={[styles.cuentaText, !isLandscape && styles.cuentaTextPortrait]}>
-                <Text style={styles.bold}> BBVA <br/></Text>
-                Gisela Guadalupe Sánchez Motilla<br/>
-                <Text style={styles.bold}>CUENTA<br/></Text>
-                153 940 9149<br/>
-                <Text style={styles.bold}>CLABE<br/></Text>
-                012 680 01539409149 0
-              </Text>
-              <Pressable onPress={() => goToLiverpool('60049317')}>
+              <View style={[styles.regalosRow, !isLandscape && styles.regalosRowPortrait]}>
+                <Pressable onPress={() => goToLiverpool('60049317')}>
                 <View style={[styles.giftContainerLiverpool, !isLandscape && styles.giftContainerLiverpoolPortrait]}>
                   <Image
                       source={require('@/assets/images/regalos/liverpool.svg')}
@@ -63,10 +49,26 @@ export default function RegalosScreen() {
                       />
                 </View>
               </Pressable>
-              <Text style={[styles.cuentaText, !isLandscape && styles.cuentaTextPortrait]}>
-                <Text style={styles.bold}> Liverpool <br/></Text>
-                60049317
-              </Text>
+              <Pressable onPress={() => goToLiverpool('60049317')}>
+                <View style={[styles.giftContainerLiverpool, !isLandscape && styles.giftContainerLiverpoolPortrait]}>
+                  <Image
+                      source={require('@/assets/images/regalos/sobre.svg')}
+                      style={generalStyles.imageStd}
+                      contentFit="contain"
+                      />
+                </View>
+              </Pressable>
+              <Pressable onPress={() => goToLiverpool('60049317')}>
+                <View style={[styles.giftContainerLiverpool, !isLandscape && styles.giftContainerLiverpoolPortrait]}>
+                  <Image
+                      source={require('@/assets/images/regalos/amazon.svg')}
+                      style={generalStyles.imageStd}
+                      contentFit="contain"
+                      />
+                </View>
+              </Pressable>
+              </View>
+              
             </View>
         </View>
       </ImageBackground>
@@ -79,10 +81,21 @@ export default function RegalosScreen() {
       position: 'absolute',
       top: '20%',
       left: '10%',
-      width: '30%',
-      backgroundColor: '#252836BB',  
+      width: '40%',
+      
       borderRadius: 15,
       padding: 20,
+      justifyContent: 'center',
+    },
+    regalosRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      width: '100%',
+      backgroundColor: 'red',
+    },
+    regalosRowPortrait: {
+      flexDirection: 'column',
+      alignItems: 'center',
       justifyContent: 'center',
     },
     
@@ -95,7 +108,7 @@ export default function RegalosScreen() {
     },
     giftMessage: {
       fontFamily: 'Raleway',
-      fontWeight: '400',
+      fontWeight: '200',
       fontSize: 18,
       maxWidth: '80%',
       color: '#FFFFFF',
@@ -120,15 +133,6 @@ export default function RegalosScreen() {
       height: 40,
       marginTop: 30,
       alignSelf: 'center'
-    },
-    cuentaText: {
-      fontSize: 13,
-      maxWidth: '80%',
-      color: '#FFFFFF',
-      textAlign: 'center',
-      alignSelf: 'center',
-      marginBottom: 4,
-      marginTop: 4,
     },
     bold:{
       marginTop: 88,

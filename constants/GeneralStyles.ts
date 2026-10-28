@@ -11,7 +11,7 @@ export const generalStyles = StyleSheet.create({
   },
   landscapeBackground: {
     flex: 1,
-    position: 'relative',
+    position: 'absolute',
     top: 0,
     left: 0,
     width: '100%',
@@ -74,5 +74,16 @@ export const generalStyles = StyleSheet.create({
   generalTextCormorant: {
     fontSize: 16,
     fontFamily: 'Cormorant Garamond',
-  }
+  },
+  scrollView: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    paddingBottom: 50,
+  },
+  scrollContent: {
+    alignItems: 'center',
+    flexGrow: 1,
+    
+  },
 });
