@@ -18,6 +18,10 @@ export default function RegalosScreen() {
        Linking.openURL(`https://mesaderegalos.liverpool.com.mx/milistaderegalos/${eventNumber}`);
        // Implement navigation to Liverpool gift page or external link
      };
+     const goToAmazon = async (event: string) => {
+       Linking.openURL(`https://www.amazon.com.mx/wedding/share/${event}`);
+       // Implement navigation to Liverpool gift page or external link
+     };
 
   return (
   <ImageBackground
@@ -40,7 +44,7 @@ export default function RegalosScreen() {
               </Text>
 
               <View style={[styles.regalosRow, !isLandscape && styles.regalosRowPortrait]}>
-                <Pressable onPress={() => goToLiverpool('60049317')}>
+                <Pressable onPress={() => goToLiverpool('51956160')}>
                 <View style={[styles.giftContainerLiverpool, !isLandscape && styles.giftContainerLiverpoolPortrait]}>
                   <Image
                       source={require('@/assets/images/regalos/liverpool.svg')}
@@ -49,7 +53,7 @@ export default function RegalosScreen() {
                       />
                 </View>
               </Pressable>
-              <Pressable onPress={() => goToLiverpool('60049317')}>
+              <Pressable>
                 <View style={[styles.giftContainerLiverpool, !isLandscape && styles.giftContainerLiverpoolPortrait]}>
                   <Image
                       source={require('@/assets/images/regalos/sobre.svg')}
@@ -58,7 +62,7 @@ export default function RegalosScreen() {
                       />
                 </View>
               </Pressable>
-              <Pressable onPress={() => goToLiverpool('60049317')}>
+              <Pressable onPress={() => goToAmazon('ZulemayJoseManuel')}>
                 <View style={[styles.giftContainerLiverpool, !isLandscape && styles.giftContainerLiverpoolPortrait]}>
                   <Image
                       source={require('@/assets/images/regalos/amazon.svg')}
