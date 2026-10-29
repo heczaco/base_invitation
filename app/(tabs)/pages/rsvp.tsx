@@ -20,13 +20,15 @@ export default function RsvpScreen() {
   // Helper function to determine which names to display
   const getDisplayNames = () => {
     const isCompleteName = (name: string) => name && name.trim().includes(' ');
-    if (guestData.nickname_1 === "" || guestData.nickname_2 === "" ) {
+    const useNicknames = false;
+    if (useNicknames && (guestData.nickname_1 === "" || guestData.nickname_2 === "" )) {
       return { name1: guestData.name_1, name2: guestData.name_2 };
     }
     else if (guestData.name_2 && isCompleteName(guestData.name_1) && isCompleteName(guestData.name_2)) {
       // Both names are complete (have first and last name)
       return { name1: guestData.name_1, name2: guestData.name_2 };
-    } else if (guestData.name_2 && (!isCompleteName(guestData.name_1) || !isCompleteName(guestData.name_2))) {
+    } else if (useNicknames && guestData.name_2 && 
+      (!isCompleteName(guestData.name_1) || !isCompleteName(guestData.name_2))) {
       // Either name is incomplete, use nicknames
       return { name1: guestData.nickname_1, name2: guestData.nickname_2 };
     } else {
