@@ -50,5 +50,10 @@
     "eslint-config-expo": "~9.2.0",
     "typescript": "~5.8.3"
   },
+  "overrides": {
+    "@react-native/virtualized-lists": {
+      "react-native": "0.79.4"
+    }
+  },
   "private": true
 }
