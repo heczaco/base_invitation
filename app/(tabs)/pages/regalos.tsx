@@ -10,8 +10,8 @@ export default function RegalosScreen() {
      const { width, height } = useWindowDimensions();
      const isLandscape = width > height;
 
-     const copyAccountNumber = async () => {
-       await Clipboard.setStringAsync('012680015394091490');
+     const copyAccountNumber = async (accountNumber: string) => {
+       await Clipboard.setStringAsync(accountNumber);
        alert('Número de cuenta copiado al portapapeles');
      };
      const goToLiverpool = async (eventNumber: string) => {
@@ -41,8 +41,6 @@ export default function RegalosScreen() {
               />
         </View>)}
         <View style={[styles.content, !isLandscape && styles.contentPortrait]}>
-            
-          
               
               <Text style={[styles.giftMessage, !isLandscape && styles.giftMessagePortrait]}>
                 Su presencia y compañía siempre será nuestro
