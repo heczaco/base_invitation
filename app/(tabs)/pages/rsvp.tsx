@@ -91,7 +91,7 @@ export default function RsvpScreen() {
   return (
     <ImageBackground
           source={require('@/assets/images/rsvp/bg.png')}
-          style={isLandscape ? generalStyles.landscapeBackground_100 : generalStyles.portraitBackground}
+          style={isLandscape ? generalStyles.landscapeBackground : generalStyles.portraitBackground}
           resizeMode="cover"
         >
       <View style={[styles.container, !isLandscape && styles.portraitContainer]}>
@@ -103,25 +103,27 @@ export default function RsvpScreen() {
             contentFit="contain"
           />
         </View>
-        
+        <View  style={[styles.names, !isLandscape && styles.namesPortrait]}>
+          <Image
+            source={require('@/assets/images/names_white.svg')}
+            style={generalStyles.imageStd}
+            contentFit="contain"
+          />
+        </View>
         {/* Names and Date */}
         <View style={isLandscape ? styles.landscapeTextContainer : styles.portraitTextContainer}>
-          <Text style={[styles.names, !isLandscape && styles.portraitNames]}>
-            GISELA E ISRAEL
-          </Text>
-          <Text style={[styles.place, !isLandscape && styles.portraitPlace]}>
-            Barra de Navidad, Jal. México
-          </Text>
+          
           <Text style={[styles.date, !isLandscape && styles.portraitDate]}>
-            07.05.27
+            8 DE ENERO 2027 {'\n'}
+            XILITLA, SLP
           </Text>
           <Text style={[styles.text, !isLandscape && styles.portraitText]}>
-            Confirma tu asistencia
+            Confirma tu asistencia antes del 20 de Noviembre
           </Text>
         
           {/* CONFIRM Button */}
           <Pressable style={[styles.button, !isLandscape && styles.buttonPortrait]} onPress={openRSVP}>
-            <Text style={[styles.buttonText, !isLandscape && styles.buttonTextPortrait]}>Confirma</Text>
+            <Text numberOfLines={1} style={[styles.buttonText, !isLandscape && styles.buttonTextPortrait]}>Confirma Aquí</Text>
           </Pressable>
         </View>
       </View>
@@ -144,75 +146,60 @@ export default function RsvpScreen() {
 }
 
 const styles = StyleSheet.create({
-  buttonPortrait: {
-    backgroundColor: '#E0C58E',
-    textAlign: 'center',
-    alignSelf: 'center',
-  },
+
   container: {
     flex: 1,
-    left: "30%",
-    top: "20%",
-    width: '40%',
-    height: '40%',
-    maxHeight: "60%",
+    width: '100%',
+    height: '100%',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#252836AA',
     borderRadius: 20,
   },
   logoContainer: {
-    width: '30%',
+    width: 200,
     aspectRatio: 1,
-    maxWidth: 600,
-    maxHeight: 400,
   },
   names: {
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '600',
-    color: 'white',
-    letterSpacing: 8,
-    fontSize: 32,
-    marginTop: 35,
-    textTransform: 'uppercase',
+    width: 350,
+    height: 150,
   },
   date: {
-    fontFamily: 'Cormorant Garamond',
+    fontFamily: 'Montserrat',
     fontWeight: '400',
-    fontSize: 40,
+    fontSize: 20,
+    textAlign: 'center',
     color: 'white',
     letterSpacing: 4,
-
-  },
-  place: {
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '300',
-    fontSize: 18,
-    color: 'white',
-    letterSpacing: 4,
-    marginTop: 8,
-    marginBottom: 4,
   },
   text: {
-    fontFamily: 'Cormorant Garamond',
+    fontFamily: 'Montserrat',
     fontWeight: '300',
     fontSize: 16,
+    maxWidth: '60%',
+    textAlign: 'center',
     color: 'white',
     marginTop: 20,
+    marginBottom: 20,
     letterSpacing: 2,
   },
   button: {
-    backgroundColor: '#E0C58E',
+    backgroundColor: '#4A4C34',
     paddingHorizontal: 40,
+    minWidth: 200,
+    height: 40,
     paddingVertical: 6,
+    justifyContent: 'center',
     borderRadius: 25,
     marginTop: 10,
   },
   buttonText: {
-    fontFamily: 'Cormorant Garamond',
-    fontWeight: '700',
-    fontSize: 22,
+    fontFamily: 'Montserrat',
+    fontWeight: '600',
+    fontSize: 16,
+    textAlign: 'center',
     letterSpacing: 2,
+    overflow: "visible",
     color: '#FFFFFF',
   },
   landscapeTextContainer: {
@@ -220,43 +207,49 @@ const styles = StyleSheet.create({
   },
   // Portrait styles (if needed in the future)
   portraitContainer: {
-    width: '80%',
-    left: "10%",
-    top: "10%",
-    height: 'auto',
+     flex: 1,
+    width: '100%',
+    height: '100%',
+    flexDirection: 'column',
+    
+    justifyContent: 'flex-start',
+    borderRadius: 20,
+  },
+  buttonPortrait: {
   },
 
   logoPortrait: {
-    width: '28%',
-    height: '25%',
-    top: 0,
-    marginTop: '-15%',
+    width: 150  ,
+    height: 150,
+    marginTop: 30,
+    
   },
   portraitTextContainer: {
     alignItems: 'center',
     marginTop: "0%",
   },
-  portraitNames: {
-    alignItems: 'center',
-    textAlign: 'center',
-    fontSize: 24,
-    letterSpacing: 4,
-  },
-  portraitPlace: {
-    alignItems: 'center',
-    textAlign: 'center',
-  },
-  portraitText: {
-    alignItems: 'center',
-    textAlign: 'center',
+  namesPortrait: {
+    width: 300,
+    height: 100,
+    marginTop: 0,
   },
   portraitDate: {
-    fontSize: 20,
+    marginTop: 20,
+    fontSize: 16,
+    textShadowColor: '#000000AA',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 1,
   },
+  portraitText: {
+    textShadowColor: '#000000AA',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 1,
+    fontSize: 14,
+    maxWidth: '60%',
+  },
+
   buttonTextPortrait: {
-    color: '#FFFFFF',
-    textAlign: 'center',
-    alignSelf: 'center',
+    fontSize: 14,
   },
   
 });

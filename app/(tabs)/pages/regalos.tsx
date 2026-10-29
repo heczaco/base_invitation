@@ -33,9 +33,16 @@ export default function RegalosScreen() {
         style={[styles.container, isLandscape ? generalStyles.landscapeBackground: generalStyles.portraitBackground]}
         resizeMode="cover"
       >
+        {!isLandscape && (<View style={[styles.monogramPortrait]}>
+          <Image
+              source={require('@/assets/images/monogram_white.svg')}
+              style={generalStyles.imageStd}
+              contentFit="contain"
+              />
+        </View>)}
         <View style={[styles.content, !isLandscape && styles.contentPortrait]}>
             
-            <View style={[!isLandscape && styles.contentBgPortrait]}> 
+          
               
               <Text style={[styles.giftMessage, !isLandscape && styles.giftMessagePortrait]}>
                 Su presencia y compañía siempre será nuestro
@@ -45,7 +52,7 @@ export default function RegalosScreen() {
 
               <View style={[styles.regalosRow, !isLandscape && styles.regalosRowPortrait]}>
                 <Pressable onPress={() => goToLiverpool('51956160')}>
-                <View style={[styles.giftContainerLiverpool, !isLandscape && styles.giftContainerLiverpoolPortrait]}>
+                <View style={[styles.giftContainer, !isLandscape && styles.giftContainerPortrait]}>
                   <Image
                       source={require('@/assets/images/regalos/liverpool.svg')}
                       style={generalStyles.imageStd}
@@ -54,7 +61,7 @@ export default function RegalosScreen() {
                 </View>
               </Pressable>
               <Pressable>
-                <View style={[styles.giftContainerLiverpool, !isLandscape && styles.giftContainerLiverpoolPortrait]}>
+                <View style={[styles.giftContainer, !isLandscape && styles.giftContainerPortrait]}>
                   <Image
                       source={require('@/assets/images/regalos/sobre.svg')}
                       style={generalStyles.imageStd}
@@ -63,7 +70,7 @@ export default function RegalosScreen() {
                 </View>
               </Pressable>
               <Pressable onPress={() => goToAmazon('ZulemayJoseManuel')}>
-                <View style={[styles.giftContainerLiverpool, !isLandscape && styles.giftContainerLiverpoolPortrait]}>
+                <View style={[styles.giftContainer, !isLandscape && styles.giftContainerPortrait]}>
                   <Image
                       source={require('@/assets/images/regalos/amazon.svg')}
                       style={generalStyles.imageStd}
@@ -74,42 +81,24 @@ export default function RegalosScreen() {
               </View>
               
             </View>
-        </View>
+        
       </ImageBackground>
     );
   }
   
   const styles = StyleSheet.create({
-    container: {},
+    container: {
+    },
     content: {
       position: 'absolute',
       top: '20%',
       left: '10%',
       width: '40%',
-      
       borderRadius: 15,
       padding: 20,
       justifyContent: 'center',
     },
-    regalosRow: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      width: '100%',
-      backgroundColor: 'red',
-    },
-    regalosRowPortrait: {
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
     
-    monogram: {
-      width: '15%',
-      aspectRatio: 1,
-      marginTop: 30,
-      marginBottom: 30,
-      alignSelf: 'center',
-    },
     giftMessage: {
       fontFamily: 'Raleway',
       fontWeight: '200',
@@ -121,56 +110,37 @@ export default function RegalosScreen() {
       marginBottom: 4,
       marginTop: 4,
     },
+    regalosRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      alignSelf: 'center',
+      width: 'auto',
+    },
     giftContainer: {
       opacity: 1,
-      marginTop: 30,
-      
-      width: 50,
-      height: 40,
+      marginTop: 10,
+      width: 90,
+      height: 90,
       alignSelf: 'center'
-    },
-    giftContainerLiverpool: {
-      opacity: 1,
-      
-      marginBottom: 10,
-      width: 40,
-      height: 40,
-      marginTop: 30,
-      alignSelf: 'center'
-    },
-    bold:{
-      marginTop: 88,
-      fontWeight: 'bold',
-    },
-    contentPortrait: {
-      backgroundColor:"transparent",
-      top: "0%",
-      left: "5%",
-      width: "90%",
     },
     // portrait styles
+    contentPortrait: {
+      alignSelf: 'center',
+      marginTop: "20%",
+      width: "80%",
+      backgroundColor: '#4A4C3499',
+    },
+    regalosRowPortrait: {
+    },
     monogramPortrait: {
       width: '35%',
       aspectRatio: 1,
-      marginTop: 15,
+      marginTop: "15%",
       marginBottom: 15,
       alignSelf: 'center',
     },
-    contentBgPortrait: {
-      backgroundColor:"#252836BB",
-      padding: 20,
-      borderRadius: 15,
-    },
-    titleNames: {
-      fontSize: 32,
-      fontFamily: 'Cormorant Garamond',
-      fontWeight: '400',
-      letterSpacing: 0,
-      color: '#FFFFFF',
-      textAlign: 'center',
-    },
     giftMessagePortrait: {
-      fontSize: 13,
+      fontSize: 12,
       fontFamily: 'Raleway',
       fontWeight: '400',
       color: '#FFFFFF',
@@ -179,14 +149,11 @@ export default function RegalosScreen() {
       marginBottom: 10,
       minWidth: "98%",
       maxWidth: "98%",
+      borderRadius: 10,
+      padding: 10,
     },
     giftContainerPortrait: {
-      marginTop: 20,
-    },
-    giftContainerLiverpoolPortrait: {
-      marginTop: 20,
-      
-
+      marginTop: 0,
     },
     cuentaTextPortrait: {
     },
