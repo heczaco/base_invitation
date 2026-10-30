@@ -205,7 +205,7 @@ export default function Menu({ currentPage, onPageChange, rsvpActive }: MenuProp
           INICIO
         </MenuButton>
         <MenuButton id="ceremonia" active={true} currentPage={currentPage} onPress={onPageChange} textVisible={textVisible} onHover={showText}>
-          CIVIL
+          CEREMONIA
         </MenuButton>
         <MenuButton id="recepcion" active={true} currentPage={currentPage} onPress={onPageChange} textVisible={textVisible} onHover={showText}>
           RECEPCIÓN
