@@ -98,7 +98,7 @@ export function RsvpModals({
             <Text style={styles.confirmedText}>{selectedAttendees} asistentes confirmados</Text>
 
             <Pressable style={styles.confirmButton} onPress={onContactPlanner}>
-              <Text style={styles.confirmButtonText}>Contactar Wedding Planner</Text>
+              <Text style={styles.confirmButtonText}>Contactar organizador</Text>
             </Pressable>
 
             <Pressable style={styles.cancelButton} onPress={onCloseConfirmed}>
