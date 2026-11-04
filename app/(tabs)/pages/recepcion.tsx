@@ -64,6 +64,8 @@ export default function RecepcionScreen() {
             <Text style={[styles.info, !isLandscape && styles.infoPortrait]}>
               Vicente Guerrero 317, Xilitla,{'\n'}
               79901 Xilitla, S.L.P.
+              {'\n'}{'\n'}
+              No Niños
             </Text>
           </View>
         </View>

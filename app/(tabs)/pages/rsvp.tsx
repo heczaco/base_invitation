@@ -120,7 +120,8 @@ export default function RsvpScreen() {
             XILITLA, SLP
           </Text>
           <Text style={[styles.text, !isLandscape && styles.portraitText]}>
-            Confirma tu asistencia antes del 20 de Noviembre
+            Confirma tu asistencia antes del 20 de Noviembre{'\n'}
+            No Niños
           </Text>
         
           {/* CONFIRM Button */}
