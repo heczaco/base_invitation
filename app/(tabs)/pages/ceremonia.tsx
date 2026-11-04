@@ -48,7 +48,7 @@ export default function CeremoniaScreen() {
             Baltazar González Zuñiga
           </Text>
           <Text style={[styles.parents, !isLandscape && styles.portraitParents]}>
-            Victor Manuel Martínez de León{'\n'}
+            Víctor Manuel Martínez de León{'\n'}
             Rosa Elvira Jonguitud Hernández
           </Text>
         </View>
